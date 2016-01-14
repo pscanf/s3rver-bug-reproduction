@@ -1,0 +1,24 @@
+{
+  "name": "s3rver-bug-reproduction",
+  "version": "1.0.0",
+  "description": "s3rver-bug-reproduction",
+  "main": "reproduction.js",
+  "scripts": {
+    "start:fakes3": "fakes3 -r /tmp/fakes3_test -p 4567",
+    "start:s3rver": "mkdir -p /tmp/s3rver_test && s3rver -h localhost -p 4567 -d /tmp/s3rver_test",
+    "repro": "node reproduction.js",
+    "s3rver": "npm-run-all -p start:s3rver repro",
+    "fakes3": "npm-run-all -p start:fakes3 repro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pscanf/s3rver-bug-reproduction.git"
+  },
+  "devDependencies": {
+    "npm-run-all": "^1.4.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.2.22",
+    "s3rver": "0.0.12"
+  }
+}
